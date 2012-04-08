@@ -1,0 +1,47 @@
+<idea-plugin version="2">
+  <name>UDK Plugin</name>
+  <id>UDKPlugin</id>
+  <description>This is fucken awesome UDK Plugin</description>
+  <version>0.1</version>
+  <vendor>YourCompany</vendor>
+
+  <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Build+Number+Ranges for description -->
+  <idea-version since-build="107.105"/>
+
+  <application-components>
+    <!-- Add your application components here -->
+      <!--component>
+          <implementation-class>com.octopussy.udkplugin.MyPluginRegistration</implementation-class>
+      </component-->
+  </application-components>
+
+  <project-components>
+    <!-- Add your project components here -->
+      <component>
+          <implementation-class>com.octopussy.udkplugin.NyProjectComponent</implementation-class>
+      </component>
+  </project-components>
+
+  <actions>
+    <!-- Add your actions here -->
+
+      <group id="UdkPlugin.SampleMenu" text="_Sample Menu" description="Sample menu">
+          <add-to-group group-id="MainMenu" anchor="last"  />
+          <action id="UdkPlugin.TestAction" class="com.octopussy.udkplugin.TestAction" text="Udk _Action" description="Blablabla" />
+      </group>
+  </actions>
+
+  <extensions defaultExtensionNs="com.intellij">
+      <fileTypeFactory implementation="com.octopussy.udkplugin.UnrealScriptFileFactory"/>
+
+      <syntaxHighlighter key="UnrealScript" implementationClass="com.octopussy.udkplugin.highlighter.UnrealScriptSyntaxHighlighter"/>
+
+      <!--lang.psiStructureViewFactory language="UnrealScript"
+                                    implementationClass="org.jetbrains.plugins.groovy.structure.GroovyStructureViewFactory"/>
+      <lang.parserDefinition language="UnrealScript" implementationClass="org.jetbrains.plugins.groovy.lang.parser.GroovyParserDefinition"/>
+      <lang.commenter language="UnrealScript" implementationClass="org.jetbrains.plugins.groovy.highlighter.GroovyCommenter"/>
+      <lang.foldingBuilder language="UnrealScript" implementationClass="org.jetbrains.plugins.groovy.lang.folding.GroovyFoldingBuilder"/>
+      <lang.formatter language="UnrealScript" implementationClass="org.jetbrains.plugins.groovy.formatter.GroovyFormattingModelBuilder"/>
+      <lang.whiteSpaceFormattingStrategy language="UnrealScript" implementationClass="org.jetbrains.plugins.groovy.formatter.GroovyWhiteSpaceFormattingStrategy"/-->
+  </extensions>
+</idea-plugin>
