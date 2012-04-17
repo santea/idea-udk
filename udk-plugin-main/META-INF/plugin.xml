@@ -32,8 +32,9 @@
   </actions>
 
   <extensions defaultExtensionNs="com.intellij">
-      <fileTypeFactory implementation="com.octopussy.udkplugin.UnrealScriptFileFactory"/>
+      <fileTypeFactory implementation="org.octopussy.udkplugin.UnrealScriptFileFactory"/>
 
+      <lang.parserDefinition language="BNF" implementationClass="org.octopussy.udkplugin.UnrealScriptParserDefinition"/>
       <syntaxHighlighter key="UnrealScript" implementationClass="com.octopussy.udkplugin.highlighter.UnrealScriptSyntaxHighlighter"/>
 
       <!--lang.psiStructureViewFactory language="UnrealScript"

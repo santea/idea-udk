@@ -6,14 +6,14 @@ import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.tree.TokenSet;
-import com.octopussy.udkplugin.lexer.UnrealScriptFlexLexer;
-import com.octopussy.udkplugin.lexer.UnrealScriptTokens;
+import org.octopussy.udkplugin.parser.UnrealScriptFlexLexer;
 import org.jetbrains.annotations.NotNull;
+import org.octopussy.udkplugin.psi.UnrealScriptTypes;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class UnrealScriptSyntaxHighlighter extends SyntaxHighlighterBase implements UnrealScriptTokens{
+public class UnrealScriptSyntaxHighlighter extends SyntaxHighlighterBase implements UnrealScriptTypes{
     private static final Map<IElementType, TextAttributesKey> ATTRIBUTES = new HashMap<IElementType, TextAttributesKey>();
 
     static final TokenSet tCOMMENTS = TokenSet.create(C_STYLE_COMMENT, END_OF_LINE_COMMENT, DOC_COMMENT);
