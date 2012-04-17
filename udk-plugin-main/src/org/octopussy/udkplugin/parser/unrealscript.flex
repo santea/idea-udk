@@ -7,7 +7,7 @@ import com.intellij.psi.tree.IElementType;
 %%
 
 %class _UnrealScriptLexer
-%implements FlexLexer, TokenType, UnrealScriptTokens
+%implements FlexLexer, TokenType, UnrealScriptTypes
 %unicode
 %public
 

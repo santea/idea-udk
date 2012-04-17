@@ -1,4 +1,4 @@
-package com.octopussy.udkplugin.lexer;
+package org.octopussy.udkplugin.parser;
 
 import com.intellij.lexer.FlexAdapter;
 

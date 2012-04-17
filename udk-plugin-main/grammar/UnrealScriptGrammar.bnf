@@ -1,0 +1,45 @@
+{
+  parserClass="org.octopussy.udkplugin.parser.UnrealScriptParser"
+  stubParserClass="org.octopussy.udkplugin.parser.UnrealScriptParserUtil"
+
+  psiClassPrefix="UnrealScript"
+  psiImplClassSuffix="Impl"
+  psiPackage="org.octopussy.udkplugin.psi"
+  psiImplPackage="org.octopussy.udkplugin.psi.impl"
+
+  implements="org.octopussy.udkplugin.psi.UnrealScriptElement"
+  extends="org.octopussy.udkplugin.psi.impl.UnrealScriptElementImpl"
+
+  elementTypeClass="org.octopussy.udkplugin.psi.UnrealScriptElementType"
+  tokenTypeClass="org.octopussy.udkplugin.psi.UnrealScriptTokenType"
+  elementTypeHolderClass="org.octopussy.udkplugin.psi.UnrealScriptTypes"
+
+  elementTypePrefix="US_"
+
+
+  // make class hierarchy nice and AST tree short
+  extends(".*expression")="expression"
+  // make expressions stable enough
+  pin(".*expression")=1
+
+  // tokens beyond id, number and string
+  ADD='+'
+  MUL='*'
+  DOT='.'
+}
+root ::= expression *
+private recover ::= !(number | string | id)
+
+expression ::= factor add_expression * {recoverUntil="recover"}
+private factor ::= primary mul_expression *
+private primary ::= literal_expression | reference_expression qreference_expression *
+
+left add_expression ::= '+' factor
+left mul_expression ::= '*' primary
+
+identifier ::= id
+reference_expression ::= identifier {mixin="mypackage.MyReferenceExpressionImpl"}
+left qreference_expression ::= '.' identifier {elementType="reference_expression"}
+
+literal_expression ::= number | string
+

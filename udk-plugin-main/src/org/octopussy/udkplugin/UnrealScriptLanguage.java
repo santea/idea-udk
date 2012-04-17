@@ -1,4 +1,4 @@
-package com.octopussy.udkplugin;
+package org.octopussy.udkplugin;
 
 import com.intellij.lang.Language;
 
