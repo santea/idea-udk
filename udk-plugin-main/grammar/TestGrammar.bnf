@@ -1,21 +1,21 @@
 {
   classHeader="header.txt"
-  parserClass="org.octopussy.udkplugin.parser.GrammarParser"
-  stubParserClass="org.octopussy.udkplugin.parser.GrammarParserUtil"
+  parserClass="org.octopussy.udkplugin.lang.parser.GrammarParser"
+  stubParserClass="org.octopussy.udkplugin.lang.parser.GrammarParserUtil"
 
 
-  implements="org.octopussy.udkplugin.psi.BnfCompositeElement"
-  extends="org.octopussy.udkplugin.psi.impl.BnfCompositeElementImpl"
+  implements="org.octopussy.udkplugin.lang.psi.BnfCompositeElement"
+  extends="org.octopussy.udkplugin.lang.psi.impl.BnfCompositeElementImpl"
 
   psiClassPrefix="Bnf"
   psiImplClassSuffix="Impl"
-  psiPackage="org.octopussy.udkplugin.psi"
-  psiImplPackage="org.octopussy.udkplugin.psi.impl"
+  psiPackage="org.octopussy.udkplugin.lang.psi"
+  psiImplPackage="org.octopussy.udkplugin.lang.psi.impl"
 
-  elementTypeHolderClass="org.octopussy.udkplugin.psi.BnfTypes"
+  elementTypeHolderClass="org.octopussy.udkplugin.lang.psi.BnfTypes"
   elementTypePrefix="BNF_"
-  elementTypeClass="org.octopussy.udkplugin.psi.BnfCompositeElementType"
-  tokenTypeClass="org.octopussy.udkplugin.psi.BnfTokenType"
+  elementTypeClass="org.octopussy.udkplugin.lang.psi.BnfCompositeElementType"
+  tokenTypeClass="org.octopussy.udkplugin.lang.psi.BnfTokenType"
   
   // tokens
   OP_EQ="="
@@ -36,10 +36,10 @@
   EXTERNAL_START="<<"
   EXTERNAL_END=">>"
 
-  implements("rule|attr")="org.octopussy.udkplugin.psi.BnfNamedElement"
-  extends("rule|attr")="org.octopussy.udkplugin.psi.impl.BnfNamedElementImpl"
-  mixin("reference_or_token")="org.octopussy.udkplugin.psi.impl.BnfRefOrTokenImpl"
-  mixin("string_literal_expression")="org.octopussy.udkplugin.psi.impl.BnfStringImpl"
+  implements("rule|attr")="org.octopussy.udkplugin.lang.psi.BnfNamedElement"
+  extends("rule|attr")="org.octopussy.udkplugin.lang.psi.impl.BnfNamedElementImpl"
+  mixin("reference_or_token")="org.octopussy.udkplugin.lang.psi.impl.BnfRefOrTokenImpl"
+  mixin("string_literal_expression")="org.octopussy.udkplugin.lang.psi.impl.BnfStringImpl"
   extends("paren_.*expression")="parenthesized"
 }
 

@@ -6,14 +6,14 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 
-public class UnrealScriptFileType extends LanguageFileType{
+public class UnrealFileType extends LanguageFileType{
 
     public static final String UNREAL_SCRIPT_EXTENSION = "uc";
-    public static final UnrealScriptFileType UNREAL_SCRIPT_FILE_TYPE = new UnrealScriptFileType();
+    public static final UnrealFileType UNREAL_SCRIPT_FILE_TYPE = new UnrealFileType();
     public static final Language UNREAL_SCRIPT_LANGUAGE = UNREAL_SCRIPT_FILE_TYPE.getLanguage();
 
-    private UnrealScriptFileType() {
-        super(new UnrealScriptLanguage());
+    private UnrealFileType() {
+        super(new UnrealLanguage());
     }
 
     @NotNull

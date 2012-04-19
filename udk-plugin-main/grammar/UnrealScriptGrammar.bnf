@@ -1,18 +1,18 @@
 {
-  parserClass="org.octopussy.udkplugin.parser.UnrealScriptParser"
-  stubParserClass="org.octopussy.udkplugin.parser.UnrealScriptParserUtil"
+  parserClass="org.octopussy.udkplugin.lang.parser.UnrealParser"
+  stubParserClass="org.octopussy.udkplugin.lang.parser.UnrealScriptParserUtil"
 
   psiClassPrefix="UnrealScript"
   psiImplClassSuffix="Impl"
-  psiPackage="org.octopussy.udkplugin.psi"
-  psiImplPackage="org.octopussy.udkplugin.psi.impl"
+  psiPackage="org.octopussy.udkplugin.lang.psi"
+  psiImplPackage="org.octopussy.udkplugin.lang.psi.impl"
 
-  implements="org.octopussy.udkplugin.psi.UnrealScriptElement"
-  extends="org.octopussy.udkplugin.psi.impl.UnrealScriptElementImpl"
+  implements="org.octopussy.udkplugin.lang.psi.api.UnrealPsiElement"
+  extends="org.octopussy.udkplugin.lang.psi.impl.UnrealPsiElementImpl"
 
-  elementTypeClass="org.octopussy.udkplugin.psi.UnrealScriptElementType"
-  tokenTypeClass="org.octopussy.udkplugin.psi.UnrealScriptTokenType"
-  elementTypeHolderClass="org.octopussy.udkplugin.psi.UnrealScriptTypes"
+  elementTypeClass="org.octopussy.udkplugin.lang.UnrealElementType"
+  tokenTypeClass="org.octopussy.udkplugin.lang.psi.UnrealScriptTokenType"
+  elementTypeHolderClass="org.octopussy.udkplugin.lang.psi.UnrealScriptTypes"
 
   elementTypePrefix="US_"
 
@@ -28,7 +28,10 @@
   DOT='.'
 }
 root ::= expression *
-private recover ::= !(number | string | id)
+keywords ::= true | false
+
+literal_expression ::= number | string
+/*private recover ::= !(number | string | id)
 
 expression ::= factor add_expression * {recoverUntil="recover"}
 private factor ::= primary mul_expression *
@@ -41,5 +44,5 @@ identifier ::= id
 reference_expression ::= identifier {mixin="mypackage.MyReferenceExpressionImpl"}
 left qreference_expression ::= '.' identifier {elementType="reference_expression"}
 
-literal_expression ::= number | string
+*/
 

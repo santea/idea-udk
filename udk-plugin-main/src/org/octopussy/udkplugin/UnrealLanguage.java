@@ -2,8 +2,8 @@ package org.octopussy.udkplugin;
 
 import com.intellij.lang.Language;
 
-public class UnrealScriptLanguage extends Language {
-    protected UnrealScriptLanguage() {
+public class UnrealLanguage extends Language {
+    protected UnrealLanguage() {
         super("UnrealScript");
     }
 

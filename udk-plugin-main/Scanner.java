@@ -26,7 +26,7 @@
 
 /* Note that this lexer specification is not tuned for speed.
    It is in fact quite slow on integer and floating point literals, 
-   because the input is read twice and the methods used to parse
+   because the input is read twice and the methods used to parseForClass
    the numbers are not very fast. 
    For a production quality application (e.g. a Java compiler) 
    this could be optimized */

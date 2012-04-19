@@ -1,4 +1,4 @@
-package com.octopussy.udkplugin.highlighter;
+package org.octopussy.udkplugin.highlighter;
 
 import com.intellij.openapi.fileTypes.SyntaxHighlighter;
 import com.intellij.openapi.fileTypes.SyntaxHighlighterFactory;

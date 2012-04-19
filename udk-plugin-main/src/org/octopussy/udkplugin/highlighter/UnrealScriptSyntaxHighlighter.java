@@ -1,4 +1,4 @@
-package com.octopussy.udkplugin.highlighter;
+package org.octopussy.udkplugin.highlighter;
 
 import com.intellij.lexer.Lexer;
 import com.intellij.openapi.editor.SyntaxHighlighterColors;
@@ -6,18 +6,18 @@ import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.tree.TokenSet;
-import org.octopussy.udkplugin.parser.UnrealScriptFlexLexer;
+import org.octopussy.udkplugin.lang.UnrealTokenTypes;
+import org.octopussy.udkplugin.lang.lexer.UnrealFlexLexer;
 import org.jetbrains.annotations.NotNull;
-import org.octopussy.udkplugin.psi.UnrealScriptTypes;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class UnrealScriptSyntaxHighlighter extends SyntaxHighlighterBase implements UnrealScriptTypes{
+public class UnrealScriptSyntaxHighlighter extends SyntaxHighlighterBase implements UnrealTokenTypes{
     private static final Map<IElementType, TextAttributesKey> ATTRIBUTES = new HashMap<IElementType, TextAttributesKey>();
 
-    static final TokenSet tCOMMENTS = TokenSet.create(C_STYLE_COMMENT, END_OF_LINE_COMMENT, DOC_COMMENT);
-    static final TokenSet tKEYWORDS = TokenSet.create(
+    static final TokenSet tCOMMENTS = TokenSet.create(C_STYLE_COMMENT, LINE_COMMENT);
+    static final TokenSet tKEYWORDS = TokenSet.create(CLASS, EXTENDS /*
             TRUE_KEYWORD,
             FALSE_KEYWORD,
             NONE_KEYWORD,
@@ -48,7 +48,7 @@ public class UnrealScriptSyntaxHighlighter extends SyntaxHighlighterBase impleme
             GOTO_KEYWORD,
             SUPER_KEYWORD,
             EXTENDS_KEYWORD,
-            DEPENDSON_KEYWORD);
+            DEPENDSON_KEYWORD*/);
 
     static final TokenSet tIDENTIFIERS = TokenSet.create(IDENTIFIER);
 
@@ -61,7 +61,7 @@ public class UnrealScriptSyntaxHighlighter extends SyntaxHighlighterBase impleme
     @NotNull
     @Override
     public Lexer getHighlightingLexer() {
-        return new UnrealScriptFlexLexer();
+        return new UnrealFlexLexer();
     }
 
     @NotNull

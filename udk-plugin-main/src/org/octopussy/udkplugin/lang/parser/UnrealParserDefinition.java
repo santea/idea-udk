@@ -1,4 +1,4 @@
-package org.octopussy.udkplugin;
+package org.octopussy.udkplugin.lang.parser;
 
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.ParserDefinition;
@@ -9,16 +9,15 @@ import com.intellij.psi.FileViewProvider;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.TokenType;
-import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.tree.IFileElementType;
 import com.intellij.psi.tree.TokenSet;
 import org.jetbrains.annotations.NotNull;
-import org.octopussy.udkplugin.parser.UnrealScriptFlexLexer;
-import org.octopussy.udkplugin.parser.UnrealScriptParser;
-import org.octopussy.udkplugin.psi.UnrealScriptFile;
-import org.octopussy.udkplugin.psi.UnrealScriptTokenType;
-import org.octopussy.udkplugin.psi.UnrealScriptTypes;
-import org.octopussy.udkplugin.psi.impl.UnrealScriptFileImpl;
+import org.octopussy.udkplugin.UnrealFileType;
+import org.octopussy.udkplugin.lang.UnrealTokenTypes;
+import org.octopussy.udkplugin.lang.lexer.UnrealFlexLexer;
+
+import org.octopussy.udkplugin.lang.psi.UnrealPsiFactory;
+import org.octopussy.udkplugin.lang.psi.impl.UnrealPsiFileImpl;
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,25 +25,24 @@ import org.octopussy.udkplugin.psi.impl.UnrealScriptFileImpl;
  * Date: 17.04.12
  * Time: 16:55
  */
-public class UnrealScriptParserDefinition implements ParserDefinition {
+public class UnrealParserDefinition implements ParserDefinition {
 
   public static final IFileElementType UNREAL_SCRIPT_FILE_ELEMENT_TYPE = new IFileElementType("UNREAL_SCRIPT_FILE",
-          UnrealScriptFileType.UNREAL_SCRIPT_LANGUAGE);
+          UnrealFileType.UNREAL_SCRIPT_LANGUAGE);
   public static final TokenSet WS = TokenSet.create(TokenType.WHITE_SPACE);
-  public static final IElementType BNF_LINE_COMMENT = new UnrealScriptTokenType("US_LINE_COMMENT");
-  public static final IElementType BNF_BLOCK_COMMENT = new UnrealScriptTokenType("US_BLOCK_COMMENT");
-  public static final TokenSet COMMENTS = TokenSet.create(BNF_LINE_COMMENT, BNF_BLOCK_COMMENT);
-  public static final TokenSet LITERALS = TokenSet.create(UnrealScriptTypes.US_STRING);
+
+  public static final TokenSet COMMENTS = TokenSet.create(UnrealTokenTypes.LINE_COMMENT, UnrealTokenTypes.LINE_COMMENT);
+  public static final TokenSet LITERALS = TokenSet.create(UnrealTokenTypes.STRING_LITERAL);
 
   @NotNull
   @Override
   public Lexer createLexer(Project project) {
-    return new UnrealScriptFlexLexer();
+    return new UnrealFlexLexer();
   }
 
   @Override
   public PsiParser createParser(Project project) {
-    return new UnrealScriptParser();
+    return new UnrealParser();
   }
 
   @Override
@@ -73,12 +71,12 @@ public class UnrealScriptParserDefinition implements ParserDefinition {
   @NotNull
   @Override
   public PsiElement createElement(ASTNode astNode) {
-    return UnrealScriptTypes.Factory.createElement(astNode);
+    return UnrealPsiFactory.createElement(astNode);
   }
 
   @Override
   public PsiFile createFile(FileViewProvider fileViewProvider) {
-    return new UnrealScriptFileImpl(fileViewProvider);
+    return new UnrealPsiFileImpl(fileViewProvider);
   }
 
   @Override

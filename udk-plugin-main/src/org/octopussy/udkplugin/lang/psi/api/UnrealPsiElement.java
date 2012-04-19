@@ -1,4 +1,4 @@
-package org.octopussy.udkplugin.psi;
+package org.octopussy.udkplugin.lang.psi.api;
 
 import com.intellij.psi.PsiElement;
 
@@ -8,5 +8,6 @@ import com.intellij.psi.PsiElement;
  * Date: 17.04.12
  * Time: 15:52
  */
-public interface UnrealScriptElement extends PsiElement{
+
+public interface UnrealPsiElement extends PsiElement{
 }
