@@ -20,7 +20,7 @@ public class TypeParser implements UnrealElementTypes {
     }
 
     PsiBuilder.Marker typeMarker = builder.mark();
-    builder.matchAny();
+    builder.skipElement();
     typeMarker.done(TYPE_ELEMENT);
 
     return true;

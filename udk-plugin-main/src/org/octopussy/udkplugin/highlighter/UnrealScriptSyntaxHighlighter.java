@@ -17,47 +17,17 @@ public class UnrealScriptSyntaxHighlighter extends SyntaxHighlighterBase impleme
   private static final Map<IElementType, TextAttributesKey> ATTRIBUTES = new HashMap<IElementType, TextAttributesKey>();
 
   static final TokenSet tCOMMENTS = TokenSet.create(C_STYLE_COMMENT, LINE_COMMENT, DOC_COMMENT);
-  static final TokenSet tKEYWORDS = TokenSet.create(CLASS_KEYWORD, EXTENDS_KEYWORD,
-          VAR_KEYWORD/*
-          TRUE_KEYWORD,
-          FALSE_KEYWORD,
-          NONE_KEYWORD,
-          VAR_KEYWORD,
-          CLASS_KEYWORD,
-          CASE_KEYWORD,
-          NEW_KEYWORD,
-          CONTINUE_KEYWORD,
-          FOR_KEYWORD,
-          IF_KEYWORD,
-          FLOAT_KEYWORD,
-          BREAK_KEYWORD,
-          STATIC_KEYWORD,
-          WHILE_KEYWORD,
-          VOID_KEYWORD,
-          PROTECTED_KEYWORD,
-          ELSE_KEYWORD,
-          INTERFACE_KEYWORD,
-          BOOLEAN_KEYWORD,
-          SWITCH_KEYWORD,
-          PUBLIC_KEYWORD,
-          SAME_KEYWORD,
-          PRIVATE_KEYWORD,
-          INT_KEYWORD,
-          RETURN_KEYWORD,
-          DO_KEYWORD,
-          NATIVE_KEYWORD,
-          GOTO_KEYWORD,
-          SUPER_KEYWORD,
-          EXTENDS_KEYWORD,
-          DEPENDSON_KEYWORD*/);
 
   static final TokenSet tIDENTIFIERS = TokenSet.create(IDENTIFIER);
 
   static {
     fillMap(ATTRIBUTES, tCOMMENTS, SyntaxHighlighterColors.LINE_COMMENT);
     fillMap(ATTRIBUTES, BUILTIN_TYPES, SyntaxHighlighterColors.KEYWORD);
-    fillMap(ATTRIBUTES, tKEYWORDS, SyntaxHighlighterColors.KEYWORD);
-    // fillMap(ATTRIBUTES, tIDENTIFIERS, SyntaxHighlighterColors.KEYWORD);
+    fillMap(ATTRIBUTES, CLASS_KEYWORDS, SyntaxHighlighterColors.KEYWORD);
+    fillMap(ATTRIBUTES, VARIABLE_KEYWORDS, SyntaxHighlighterColors.KEYWORD);
+    fillMap(ATTRIBUTES, FUNCTION_KEYWORDS, SyntaxHighlighterColors.KEYWORD );
+    fillMap(ATTRIBUTES, PARAMETER_KEY_KEYWORDS, SyntaxHighlighterColors.KEYWORD);
+    fillMap(ATTRIBUTES, OTHER_KEYWORDS, SyntaxHighlighterColors.KEYWORD);
   }
 
   @NotNull

@@ -21,10 +21,6 @@ public class UnrealPsiBuilder {
     myBuilder = builder;
   }
 
-  public void matchAny(){
-    myBuilder.advanceLexer();
-  }
-
   public boolean match(IElementType element){
     if (element.equals(myBuilder.getTokenType())){
       myBuilder.advanceLexer();
@@ -52,33 +48,25 @@ public class UnrealPsiBuilder {
     return type.equals(myBuilder.getTokenType());
   }
 
+  public IElementType compareToken(TokenSet tokens) {
+    if (tokens.contains(myBuilder.getTokenType()))
+      return myBuilder.getTokenType();
+    return null;
+  }
+
   public PsiBuilder.Marker mark() {
     return myBuilder.mark();
   }
 
-  public void error(String errorMessage) {
-    myBuilder.error(UdkBundle.message(errorMessage));
-  }
-
-  public void eatError(String errorMessage) {
-    PsiBuilder.Marker marker = myBuilder.mark();
-    myBuilder.advanceLexer();
-    marker.error(UdkBundle.message(errorMessage));
-  }
-
-  public String getTokenText() {
-    return myBuilder.getTokenText();
-  }
-
-  public void cleanAfterError() {
+  public void cleanAfterError(String errorText) {
     int i = 0;
     PsiBuilder.Marker em = mark();
     while (!myBuilder.eof() && !(compareToken(WHITE_SPACE)) || compareToken(SEMICOLON)) {
-      matchAny();
+      skipElement();
       i++;
     }
     if (i > 0) {
-      em.error("separator.expected");
+      eatError(em, errorText);
     } else {
       em.drop();
     }
@@ -94,15 +82,55 @@ public class UnrealPsiBuilder {
     while(lookupElement != null && !lookupElement.equals(token)){
       lookupElement = myBuilder.lookAhead(++result);
     }
-
-    return result;
+    if (lookupElement != null)
+      return result;
+    return -1;
   }
 
   public IElementType fastForwardTo(final TokenSet tokens) {
-    while(!tokens.contains(myBuilder.getTokenType())){
+    while(!myBuilder.eof() && !tokens.contains(myBuilder.getTokenType())){
       myBuilder.advanceLexer();
     }
 
+    return myBuilder.getTokenType();
+  }
+
+  public void error(String errorMessage) {
+    myBuilder.error(UdkBundle.message(errorMessage));
+  }
+
+  public IElementType eatError(String errorMessage) {
+    PsiBuilder.Marker marker = myBuilder.mark();
+    myBuilder.advanceLexer();
+    marker.error(UdkBundle.message(errorMessage));
+    return myBuilder.getTokenType();
+  }
+
+  public void eatError(PsiBuilder.Marker marker, String errorMessage) {
+    marker.error(UdkBundle.message(errorMessage));
+  }
+
+  public String getTokenText() {
+    return myBuilder.getTokenText();
+  }
+
+  public IElementType skipElement(){
+    myBuilder.advanceLexer();
+    return myBuilder.getTokenType();
+  }
+
+  public IElementType eatElement() {
+    IElementType current = myBuilder.getTokenType();
+    PsiBuilder.Marker marker = myBuilder.mark();
+    myBuilder.advanceLexer();
+    marker.done(current);
+    return myBuilder.getTokenType();
+  }
+
+  public IElementType eatElement(IElementType elem) {
+    PsiBuilder.Marker marker = myBuilder.mark();
+    myBuilder.advanceLexer();
+    marker.done(elem);
     return myBuilder.getTokenType();
   }
 }

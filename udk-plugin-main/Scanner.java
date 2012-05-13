@@ -26,7 +26,7 @@
 
 /* Note that this lexer specification is not tuned for speed.
    It is in fact quite slow on integer and floating point literals, 
-   because the input is read twice and the methods used to parse
+   because the input is read twice and the methods used to tryParseBlock
    the numbers are not very fast. 
    For a production quality application (e.g. a Java compiler) 
    this could be optimized */
@@ -762,7 +762,7 @@ public class Scanner implements sym, java_cup.runtime.Scanner {
   /* error messages for the codes above */
   private static final String ZZ_ERROR_MSG[] = {
     "Unkown internal scanner error",
-    "Error: could not matchAny input",
+    "Error: could not skipElement input",
     "Error: pushback value was too large"
   };
 
@@ -988,7 +988,7 @@ public class Scanner implements sym, java_cup.runtime.Scanner {
    * Reports an error that occured while scanning.
    *
    * In a wellformed scanner (no or only correct usage of
-   * yypushback(int) and a matchAny-all fallback rule) this method
+   * yypushback(int) and a skipElement-all fallback rule) this method
    * will only be called with things that "Can't Possibly Happen".
    * If this method is called, something is seriously wrong
    * (e.g. a JFlex bug producing a faulty scanner etc.).

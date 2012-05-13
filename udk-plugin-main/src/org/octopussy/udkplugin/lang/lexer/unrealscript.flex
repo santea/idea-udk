@@ -11,6 +11,7 @@ import org.octopussy.udkplugin.lang.UnrealTokenTypes;
 %implements FlexLexer, UnrealTokenTypes
 %unicode
 %public
+%ignorecase
 
 %type IElementType
 
@@ -73,10 +74,18 @@ ESCAPE_SEQUENCE=\\[^\r\n]
 ";"                     { return SEMICOLON; }
 "("                     { return LPAREN; }
 ")"                     { return RPAREN; }
+","                     { return COMMA; }
+"{"                     { return LCURLY; }
+"}"                     { return RCURLY; }
+
+"if"                    { return IF_KEYWORD; }
+"for"                   { return FOR_KEYWORD; }
 
 "class"                 { return CLASS_KEYWORD; }
 "extends"               { return EXTENDS_KEYWORD; }
+"function"              { return FUNCTION_KEYWORD; }
 "var"                   { return VAR_KEYWORD; }
+"local"                 { return LOCAL_KEYWORD; }
 
 // builtin types keywords
 "byte"                  { return BYTE_KEYWORD; }
@@ -85,6 +94,43 @@ ESCAPE_SEQUENCE=\\[^\r\n]
 "float"                 { return FLOAT_KEYWORD; }
 "string"                { return STRING_KEYWORD; }
 "name"                  { return NAME_KEYWORD; }
+
+// other keywords
+"native"                { return NATIVE_KEYWORD; }
+"nativereplication"     { return NATIVEREPLICATION_KEYWORD; }
+"abstract"              { return ABSTRACT_KEYWORD; }
+"guid"                  { return GUID_KEYWORD; }
+"transient"             { return TRANSIENT_KEYWORD; }
+"config"                { return CONFIG_KEYWORD; }
+"placeable"             { return PLACEABLE_KEYWORD; }
+"notplaceable"          { return NOTPLACEABLE_KEYWORD; }
+"hidecategory"          { return HIDECATEGORY_KEYWORD; }
+"noexport"              { return NOEXPORT_KEYWORD; }
+
+"const"                 { return CONST_KEYWORD; }
+"editconst"             { return EDITCONST_KEYWORD; }
+"input"                 { return INPUT_KEYWORD; }
+"private"               { return PRIVATE_KEYWORD; }
+"travel"                { return TRAVEL_KEYWORD; }
+"export"                { return EXPORT_KEYWORD; }
+"protected"             { return PROTECTED_KEYWORD; }
+"archetype"             { return ARCHETYPE_KEYWORD; }
+
+"static"                { return STATIC_KEYWORD; }
+"singular"              { return SINGULAR_KEYWORD; }
+"latent"                { return LATENT_KEYWORD; }
+"iterator"              { return ITERATOR_KEYWORD; }
+"final"                 { return FINAL_KEYWORD; }
+"simulated"             { return SIMULATED_KEYWORD; }
+"operator"              { return OPERATOR_KEYWORD; }
+"preOperator"           { return PREOPERATOR_KEYWORD; }
+"postOperator"          { return POSTOPERATOR_KEYWORD; }
+"event"                 { return EVENT_KEYWORD; }
+
+// function parameter keys
+"out"                   { return OUT_KEYWORD; }
+"optional"              { return OPTIONAL_KEYWORD; }
+"coerce"                { return COERCE_KEYWORD; }
 
    /*
 "true"                  { return TRUE_KEYWORD; }
