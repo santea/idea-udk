@@ -36,7 +36,7 @@
 
       <syntaxHighlighter key="UnrealScript" implementationClass="org.octopussy.udkplugin.highlighter.UnrealScriptSyntaxHighlighter"/>
       <lang.parserDefinition language="UnrealScript" implementationClass="org.octopussy.udkplugin.lang.parser.UnrealParserDefinition"/>
-
+      <lang.commenter language="UnrealScript" implementationClass="org.octopussy.udkplugin.commenter.UnrealCommenter"/>
       <!--lang.psiStructureViewFactory language="UnrealScript"
                                     implementationClass="org.jetbrains.plugins.groovy.structure.GroovyStructureViewFactory"/>
       <lang.parserDefinition language="UnrealScript" implementationClass="org.jetbrains.plugins.groovy.lang.parser.GroovyParserDefinition"/>

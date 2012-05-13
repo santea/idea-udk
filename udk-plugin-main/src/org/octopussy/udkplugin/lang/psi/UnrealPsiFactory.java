@@ -22,7 +22,7 @@ public class UnrealPsiFactory implements UnrealElementTypes{
       return new UnrealClassDefImpl(node);
     }
 
-    if (type.equals(CLASS_REF)){
+    if (type.equals(EXTENDS_CLAUSE_ELEMENT)){
       return new UnrealRefImpl(node);
     }
 

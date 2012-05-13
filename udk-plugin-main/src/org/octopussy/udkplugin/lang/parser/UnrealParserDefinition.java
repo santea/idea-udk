@@ -31,7 +31,8 @@ public class UnrealParserDefinition implements ParserDefinition {
           UnrealFileType.UNREAL_SCRIPT_LANGUAGE);
   public static final TokenSet WS = TokenSet.create(TokenType.WHITE_SPACE);
 
-  public static final TokenSet COMMENTS = TokenSet.create(UnrealTokenTypes.LINE_COMMENT, UnrealTokenTypes.LINE_COMMENT);
+  public static final TokenSet COMMENTS = TokenSet.create(UnrealTokenTypes.LINE_COMMENT, UnrealTokenTypes.C_STYLE_COMMENT,
+          UnrealTokenTypes.DOC_COMMENT);
   public static final TokenSet LITERALS = TokenSet.create(UnrealTokenTypes.STRING_LITERAL);
 
   @NotNull

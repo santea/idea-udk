@@ -5,7 +5,7 @@ import com.intellij.lang.PsiBuilder;
 import com.intellij.lang.PsiParser;
 import com.intellij.psi.tree.IElementType;
 import org.jetbrains.annotations.NotNull;
-import org.octopussy.udkplugin.lang.parser.parsing.RootParser;
+import org.octopussy.udkplugin.lang.parser.parsing.toplevel.FileParser;
 import org.octopussy.udkplugin.lang.parser.util.UnrealPsiBuilder;
 
 /**
@@ -19,9 +19,11 @@ public class UnrealParser implements PsiParser{
   @NotNull
   @Override
   public ASTNode parse(IElementType root, PsiBuilder builder) {
+    final UnrealPsiBuilder builderEx = new UnrealPsiBuilder(builder);
+
     builder.setDebugMode(true);
-    PsiBuilder.Marker rootMarker = builder.mark();
-    RootParser.parse(new UnrealPsiBuilder(builder));
+    PsiBuilder.Marker rootMarker = builderEx.mark();
+    FileParser.parse(builderEx);
     rootMarker.done(root);
     return builder.getTreeBuilt();
   }

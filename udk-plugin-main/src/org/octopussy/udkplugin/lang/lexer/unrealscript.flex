@@ -61,6 +61,7 @@ ESCAPE_SEQUENCE=\\[^\r\n]
 {WHITE_SPACE_CHAR}+     { return WHITE_SPACE; }
 {C_STYLE_COMMENT}       { return C_STYLE_COMMENT; }
 {LINE_COMMENT}          { return LINE_COMMENT; }
+{DOC_COMMENT}           { return DOC_COMMENT; }
 
 //{DOC_COMMENT}           { return DOC_COMMENT; }
 //{INTEGER_LITERAL}       { return INTEGER_LITERAL; }
@@ -70,9 +71,21 @@ ESCAPE_SEQUENCE=\\[^\r\n]
 {STRING_LITERAL}        { return STRING_LITERAL; }
 
 ";"                     { return SEMICOLON; }
+"("                     { return LPAREN; }
+")"                     { return RPAREN; }
 
-"class"                 { return CLASS; }
-"extends"               { return EXTENDS; }
+"class"                 { return CLASS_KEYWORD; }
+"extends"               { return EXTENDS_KEYWORD; }
+"var"                   { return VAR_KEYWORD; }
+
+// builtin types keywords
+"byte"                  { return BYTE_KEYWORD; }
+"int"                   { return INT_KEYWORD; }
+"bool"                  { return BOOL_KEYWORD; }
+"float"                 { return FLOAT_KEYWORD; }
+"string"                { return STRING_KEYWORD; }
+"name"                  { return NAME_KEYWORD; }
+
    /*
 "true"                  { return TRUE_KEYWORD; }
 "false"                 { return FALSE_KEYWORD; }
