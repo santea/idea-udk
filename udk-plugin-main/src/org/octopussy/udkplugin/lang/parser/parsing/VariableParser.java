@@ -91,6 +91,6 @@ public class VariableParser implements UnrealElementTypes {
       --keywordsTokensNum;
     }
 
-    keywordsMarker.done(VARIABLE_KEYWORDS_CLAUSE_ELEMENT);
+    keywordsMarker.done(VARIABLE_KEYWORD_LIST_ELEMENT);
   }
 }

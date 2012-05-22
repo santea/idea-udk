@@ -66,7 +66,7 @@ public class FunctionParser implements UnrealElementTypes {
         current = builder.eatElement();
     }
 
-    keywordsMarker.done(FUNCTION_KEYWORDS_CLAUSE_ELEMENT);
+    keywordsMarker.done(FUNCTION_KEYWORD_LIST_ELEMENT);
   }
 
   private static void parseParameterList(UnrealPsiBuilder builder) {

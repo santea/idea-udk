@@ -1,0 +1,9 @@
+Unreal script file
+  Unreal class declaration
+    PsiElement(class)('class')
+    PsiWhiteSpace(' ')
+    PsiElement(identifier)('Actor')
+    PsiWhiteSpace(' ')
+    Class keyword list
+      <empty list>
+    PsiElement(;)(';')

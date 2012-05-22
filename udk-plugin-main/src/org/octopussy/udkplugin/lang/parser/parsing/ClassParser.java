@@ -26,7 +26,7 @@ public class ClassParser implements UnrealElementTypes {
       return false;
     } else {
       className = builder.getTokenText();
-      builder.eatElement(IDENTIFIER);
+      builder.skipElement();
     }
 
     // extends
@@ -69,6 +69,6 @@ public class ClassParser implements UnrealElementTypes {
     }
 
     builder.match(SEMICOLON, "semicolon.expected");
-    keywordsMarker.done(CLASS_KEYWORDS_CLAUSE_ELEMENT);
+    keywordsMarker.done(CLASS_KEYWORD_LIST_ELEMENT);
   }
 }

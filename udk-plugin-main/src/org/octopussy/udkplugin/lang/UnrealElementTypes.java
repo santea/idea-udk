@@ -8,13 +8,13 @@ public interface UnrealElementTypes {
   UnrealElementType TYPE_ELEMENT = new UnrealElementType("Type element");
 
   UnrealElementType CLASS_DECLARATION = new UnrealElementType("Unreal class declaration");
-  UnrealElementType CLASS_KEYWORDS_CLAUSE_ELEMENT = new UnrealElementType("Class keywords clause");
+  UnrealElementType CLASS_KEYWORD_LIST_ELEMENT = new UnrealElementType("Class keyword list");
 
   UnrealElementType FUNCTION_DECLARATION = new UnrealElementType("Function declaration");
-  UnrealElementType FUNCTION_KEYWORDS_CLAUSE_ELEMENT = new UnrealElementType("Function keywords clause");
+  UnrealElementType FUNCTION_KEYWORD_LIST_ELEMENT = new UnrealElementType("Function keyword list");
 
   UnrealElementType VARIABLE_DECLARATION = new UnrealElementType("Variable declaration");
-  UnrealElementType VARIABLE_KEYWORDS_CLAUSE_ELEMENT = new UnrealElementType("Variable keywords clause");
+  UnrealElementType VARIABLE_KEYWORD_LIST_ELEMENT = new UnrealElementType("Variable keyword list");
 
   UnrealElementType REFERENCE_ELEMENT = new UnrealElementType("Reference element");
   UnrealElementType EXTENDS_CLAUSE_ELEMENT = new UnrealElementType("Extends clause");

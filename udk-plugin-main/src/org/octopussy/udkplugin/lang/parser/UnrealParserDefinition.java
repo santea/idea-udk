@@ -27,7 +27,7 @@ import org.octopussy.udkplugin.lang.psi.impl.UnrealPsiFileImpl;
  */
 public class UnrealParserDefinition implements ParserDefinition {
 
-  public static final IFileElementType UNREAL_SCRIPT_FILE_ELEMENT_TYPE = new IFileElementType("UNREAL_SCRIPT_FILE",
+  public static final IFileElementType UNREAL_SCRIPT_FILE_ELEMENT_TYPE = new IFileElementType("Unreal script file",
           UnrealFileType.UNREAL_SCRIPT_LANGUAGE);
   public static final TokenSet WS = TokenSet.create(TokenType.WHITE_SPACE);
 
